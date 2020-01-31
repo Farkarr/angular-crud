@@ -7,7 +7,7 @@
     </div>
     <div class="col-sm-4">
       <div class="alert alert-success alert-dismissable" *ngIf="alertMsg">
-        <a href="#" class="close" (click)="closeAlert()">&times;</a>
+        <a class="close" (click)="closeAlert()">&times;</a>
         {{alertMsg}}
       </div>
     </div>
@@ -40,7 +40,7 @@
             Email: 
           </label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="email" name="email" [(ngModel)]="employee.email" placeholder="Enter a new position">
+            <input type="text" class="form-control" id="email" name="email" [(ngModel)]="employee.email" placeholder="Enter a new email">
           </div>
         </div>
 
