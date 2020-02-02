@@ -12,7 +12,7 @@ export class EmployeeService{
     public url: string;
 
     constructor(private _http: HttpClient){
-        this.url = Global.devUrl;
+        this.url = Global.url;
     }
 
     saveEmployee(employee: Employee): Observable<any>{
