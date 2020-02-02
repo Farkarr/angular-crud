@@ -30,9 +30,13 @@ export class AppComponent implements OnInit{
 
   addEmployee():void{
    
-    this._EmployeeService.saveEmployee(this.employee).subscribe();
-    this.alertMsg = "Record added successfully";
-    this.showEmployees()
+    this._EmployeeService.saveEmployee(this.employee).subscribe(
+      response => {
+        
+        this.alertMsg = response.message;
+        this.showEmployees();
+      }
+    );
   }
 
   showEmployees():void{
@@ -47,9 +51,13 @@ export class AppComponent implements OnInit{
 
     if(deleteResp) {
       
-      this._EmployeeService.deleteEmployee(this.employees[i]).subscribe();
-      this.showEmployees();
-      this.alertMsg = "The record has been deleted";
+      this._EmployeeService.deleteEmployee(this.employees[i]).subscribe(
+        response => {
+          
+          this.alertMsg = response.message;
+          this.showEmployees();
+        }
+      );
     }
   }
 
@@ -67,10 +75,14 @@ export class AppComponent implements OnInit{
 
     for(let i = 0; i < this.employees.length; i++){
       if(index == i){
-        this._EmployeeService.updateEmployee(this.updateModel).subscribe();
-        this.alertMsg = "Record is successfully updated";
+        this._EmployeeService.updateEmployee(this.updateModel).subscribe(
+          response => {
+            
+            this.alertMsg = response.message;
+            this.showEmployees();
+          }
+        );
         this.hideUpdateForm = true;
-        this.showEmployees();
       }
     }
   }
@@ -78,4 +90,5 @@ export class AppComponent implements OnInit{
   closeAlert():void{
     this.alertMsg = "";
   }
+
 }
